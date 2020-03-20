@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'bottombar.dart';
+import 'cookie_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,15 +15,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      routes: {
+         '/': (context) => MyHomePage(),
+      },
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key}) : super(key: key);
 
-  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -95,7 +98,19 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 Tab(child: Text('Cookies', style: TextStyle(fontSize: 21.0))),
                 Tab(child: Text('Cookie  cake', style: TextStyle(fontSize: 21.0))),
                 Tab(child: Text('Ice Cake', style: TextStyle(fontSize: 21.0))),
-              ])
+              ]),
+              Container(
+                height:MediaQuery.of(context).size.height - 50.0 ,
+                width: double.infinity,
+                child:TabBarView(
+                  controller: _tabController,
+                  children: <Widget>[
+                    CookiePage(),
+                    CookiePage(),
+                    CookiePage(),
+                  ],
+                )
+              ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
