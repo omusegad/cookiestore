@@ -15,10 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
-      routes: {
-         '/': (context) => MyHomePage(),
-      },
+      home: MyHomePage(),
     );
   }
 }
@@ -114,6 +111,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'btn',
         onPressed: () {},
         backgroundColor: Color(0xFFF17532),
         child:Icon(Icons.fastfood)
